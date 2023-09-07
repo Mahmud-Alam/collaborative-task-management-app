@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import HomeCSS from './Home.module.css';
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 
 const Home = () => {
 
@@ -85,7 +86,7 @@ const Home = () => {
                   Submit
                 </Button>
               </Form>
-              <p className="mt-3">Already Have an Account <span>Signin</span></p>
+              <p className="mt-3">Already Have an Account <span><NavLink to="/login">Signin</NavLink></span></p>
             </div>
           </Col>
           <Col lg={6} md={6} className="mt-3 align-self-center">
