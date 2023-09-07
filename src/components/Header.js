@@ -8,7 +8,7 @@ import HeaderCSS from './Header.module.css';
 const Header = () => {
   return (
     <>
-      <Navbar bg="dark" data-bs-theme="dark">
+      <Navbar className={HeaderCSS.navBar} bg="dark" data-bs-theme="dark">
         <Container>
           <Navbar.Brand href="#home">Collaborative Task Management App</Navbar.Brand>
           <Nav className="me-auto">
