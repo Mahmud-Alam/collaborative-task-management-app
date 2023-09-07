@@ -1,30 +1,57 @@
-import React from 'react'
+import React, { useState } from "react";
 import HomeCSS from './Home.module.css';
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 
 const Home = () => {
+
+    const [inpVal, setInpVal] = useState({
+        username:"",
+        name:"",
+        email:"",
+        password:""
+    })
+    console.log(inpVal);
+
+    const [data, setData] = useState([])
+    
+    const getData = (e) => {
+        console.log(e.target.value);
+        
+        const {value, name} = e.target;
+        console.log(value, name);
+
+        setInpVal(()=>{
+            return{
+                ...inpVal,
+                [name]:value
+            }
+        })
+
+    }
+
+
   return (
     <>
-        <Container>
+      <Container>
         <Row>
           <Col lg={6} md={6} className="mt-5">
             <h3 className="text-center col-lg-8 col-md-8">Sign Up</h3>
             <div>
               <Form>
                 <Form.Group className="mb-3 col-lg-8 col-md-8" controlId="formBasicEmail">
-                  <Form.Control name="username" type="text" placeholder="Username" />
+                  <Form.Control name="username" type="text" onChange={getData} placeholder="Username" />
                 </Form.Group>
 
                 <Form.Group className="mb-3 col-lg-8 col-md-8" controlId="formBasicEmail">
-                  <Form.Control name="name" type="text" placeholder="Full Name" />
+                  <Form.Control name="name" type="text" onChange={getData} placeholder="Full Name" />
                 </Form.Group>
 
                 <Form.Group className="mb-3 col-lg-8 col-md-8" controlId="formBasicEmail">
-                  <Form.Control name="email" type="email" placeholder="Email" />
+                  <Form.Control name="email" type="email" onChange={getData} placeholder="Email" />
                 </Form.Group>
 
                 <Form.Group className="mb-3 col-lg-8 col-md-8" controlId="formBasicPassword">
-                  <Form.Control name="password" type="password" placeholder="Password" />
+                  <Form.Control name="password" type="password" onChange={getData} placeholder="Password" />
                 </Form.Group>
                 <Button className={`col-lg-8 col-md-8 ${HomeCSS.btn}`} variant="primary" type="submit">
                   Submit
@@ -41,7 +68,7 @@ const Home = () => {
         </Row>
       </Container>
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
