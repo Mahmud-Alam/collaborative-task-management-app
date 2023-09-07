@@ -35,7 +35,7 @@ const Home = () => {
           </Col>
           <Col lg={6} md={6} className="mt-3 align-self-center">
             <div>
-                <img src="" alt="" srcset=""/>
+                <img className={`${HomeCSS.homeImg}`} src="./homeImg.jpg" alt=""/>
             </div>
           </Col>
         </Row>
