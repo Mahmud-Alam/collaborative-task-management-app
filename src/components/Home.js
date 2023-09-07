@@ -1,4 +1,5 @@
 import React from 'react'
+import HomeCSS from './Home.module.css';
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 
 const Home = () => {
@@ -25,7 +26,7 @@ const Home = () => {
                 <Form.Group className="mb-3 col-lg-8 col-md-8" controlId="formBasicPassword">
                   <Form.Control name="password" type="password" placeholder="Password" />
                 </Form.Group>
-                <Button className="col-lg-8 col-md-8" variant="primary" type="submit">
+                <Button className={`col-lg-8 col-md-8 ${HomeCSS.btn}`} variant="primary" type="submit">
                   Submit
                 </Button>
               </Form>
