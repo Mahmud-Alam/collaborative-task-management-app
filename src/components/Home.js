@@ -1,92 +1,23 @@
 import React, { useState } from "react";
 import HomeCSS from './Home.module.css';
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Home = () => {
 
-    const [inpVal, setInpVal] = useState({
-        username:"",
-        name:"",
-        email:"",
-        password:""
-    })
-    //console.log(inpVal);
-
-    const [data, setData] = useState([])
-    
-    const getData = (e) => {
-        //console.log(e.target.value);
-        
-        const {value, name} = e.target;
-        //console.log(value, name);
-
-        setInpVal(()=>{
-            return{
-                ...inpVal,
-                [name]:value
-            }
-        })
-
-    }
-
-    const setlocalStorage = (e) => {
-        e.preventDefault();
-
-        console.log(inpVal);
-
-        const {username, name, email, password} = inpVal;
-
-        if(username === ""){
-            alert('Username is required!')
-        }else if(username.length < 4){
-            alert('Username should be at least 4 characters long')
-        }else if(name === ""){
-            alert('Name is required!')
-        }else if(email === ""){
-            alert('Email is required!')
-        }else if(!email.includes("@")){
-            alert('Please Enter valid Email Address!')
-        }else if(password === ""){
-            alert('Password is required!')
-        }else if(password.length < 6){
-            alert('Password should be at least 6 characters long')
-        }else{
-            localStorage.setItem("userData",JSON.stringify([...data,inpVal]));
-
-        }
-        
-    }
-
+  const history = useNavigate()
 
   return (
     <>
       <Container>
-        <Row>
+        <Row className={`${HomeCSS.marTop} ${HomeCSS.rowMar}`}>
           <Col lg={6} md={6} className="mt-5">
-            <h3 className="text-center col-lg-8 col-md-8">Sign Up</h3>
-            <div>
-              <Form>
-                <Form.Group className="mb-3 col-lg-8 col-md-8" controlId="formBasicEmail">
-                  <Form.Control name="username" type="text" onChange={getData} placeholder="Username" />
-                </Form.Group>
-
-                <Form.Group className="mb-3 col-lg-8 col-md-8" controlId="formBasicEmail">
-                  <Form.Control name="name" type="text" onChange={getData} placeholder="Full Name" />
-                </Form.Group>
-
-                <Form.Group className="mb-3 col-lg-8 col-md-8" controlId="formBasicEmail">
-                  <Form.Control name="email" type="email" onChange={getData} placeholder="Email" />
-                </Form.Group>
-
-                <Form.Group className="mb-3 col-lg-8 col-md-8" controlId="formBasicPassword">
-                  <Form.Control name="password" type="password" onChange={getData} placeholder="Password" />
-                </Form.Group>
-                <Button className={`col-lg-8 col-md-8 ${HomeCSS.btn}`} onClick={setlocalStorage} variant="primary" type="submit">
-                  Submit
-                </Button>
-              </Form>
-              <p className="mt-3">Already Have an Account <span><NavLink to="/login">Signin</NavLink></span></p>
+            <h1 className={HomeCSS.h1Home}>Welcome to</h1>
+            <h2 className={HomeCSS.textHome}>Collaborative Task Management App</h2>
+            <p className={HomeCSS.pHome}>Elevate your task management with our collaborative app – the best choice for efficient teamwork. Real-time updates, easy task delegation, and seamless integration make it a game-changer. Try it now and experience unmatched productivity!</p>
+            <div className={HomeCSS.btnDiv}>
+              <Button className={`me-4 px-5 ${HomeCSS.btn}`} onClick={()=>history('/login')}>Login</Button>
+              <Button className={`px-5 ${HomeCSS.btn}`} onClick={()=>history('/signup')}>Sign Up</Button>
             </div>
           </Col>
           <Col lg={6} md={6} className="mt-3 align-self-center">

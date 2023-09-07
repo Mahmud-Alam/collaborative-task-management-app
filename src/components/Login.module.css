@@ -1,0 +1,13 @@
+.pLogin{
+    font-weight: 500;
+}
+
+.link{
+    color: #ff8880;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.link:hover{
+    color: #484bf2;
+}

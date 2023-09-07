@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import HomeCSS from './Home.module.css';
 import LoginCSS from './Login.module.css';
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-const Login = () => {
-
-    const history = useNavigate();
+const SignUp = () => {
 
     const [inpVal, setInpVal] = useState({
+        username:"",
+        name:"",
         email:"",
         password:""
     })
@@ -33,14 +33,18 @@ const Login = () => {
 
     const setlocalStorage = (e) => {
         e.preventDefault();
-        //console.log(inpVal);
-        
-        const getUserArr = localStorage.getItem("userData")
-        //console.log(getUserArr);
 
-        const {email, password} = inpVal;
+        console.log(inpVal);
 
-        if(email === ""){
+        const {username, name, email, password} = inpVal;
+
+        if(username === ""){
+            alert('Username is required!')
+        }else if(username.length < 4){
+            alert('Username should be at least 4 characters long')
+        }else if(name === ""){
+            alert('Name is required!')
+        }else if(email === ""){
             alert('Email is required!')
         }else if(!email.includes("@")){
             alert('Please Enter valid Email Address!')
@@ -49,31 +53,29 @@ const Login = () => {
         }else if(password.length < 6){
             alert('Password should be at least 6 characters long')
         }else{
-            if(getUserArr && getUserArr.length){
-                const userData = JSON.parse(getUserArr);
-                const userLogin = userData.filter((ele,i)=>{
-                    return ele.email === email && ele.password ===password;
-                });
-                
-                if(userLogin.length === 0){
-                    alert("Email or Password is Incorrect!")
-                }else{
-                    localStorage.setItem("user_login", JSON.stringify(userLogin));
-                    history("/dashboard");
-                }
-            }
+            localStorage.setItem("userData",JSON.stringify([...data,inpVal]));
 
         }
+        
     }
+
 
   return (
     <>
       <Container>
         <Row>
           <Col lg={6} md={6} className="mt-5">
-            <h3 className={`text-center col-lg-8 col-md-8 ${HomeCSS.textHome}`}>Login</h3>
+            <h3 className={`text-center col-lg-8 col-md-8 ${HomeCSS.textHome}`}>Sign Up</h3>
             <div>
               <Form>
+                <Form.Group className="mb-3 col-lg-8 col-md-8" controlId="formBasicEmail">
+                  <Form.Control name="username" type="text" onChange={getData} placeholder="Username" />
+                </Form.Group>
+
+                <Form.Group className="mb-3 col-lg-8 col-md-8" controlId="formBasicEmail">
+                  <Form.Control name="name" type="text" onChange={getData} placeholder="Full Name" />
+                </Form.Group>
+
                 <Form.Group className="mb-3 col-lg-8 col-md-8" controlId="formBasicEmail">
                   <Form.Control name="email" type="email" onChange={getData} placeholder="Email" />
                 </Form.Group>
@@ -85,7 +87,7 @@ const Login = () => {
                   Submit
                 </Button>
               </Form>
-              <p className={`mt-3 ${LoginCSS.pLogin}`}>Don't Have An Account? <span><NavLink className={LoginCSS.link} to="/signup">Sign Up</NavLink></span></p>
+              <p className={`mt-3 ${LoginCSS.pLogin}`}>Already Have an Account? <span><NavLink className={LoginCSS.link} to="/login">Login</NavLink></span></p>
             </div>
           </Col>
           <Col lg={6} md={6} className="mt-3 align-self-center">
@@ -96,7 +98,7 @@ const Login = () => {
         </Row>
       </Container>
     </>
-  )
-}
+  );
+};
 
-export default Login
+export default SignUp;

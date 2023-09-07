@@ -2,32 +2,71 @@
     width: 100%;
 }
 
+.h1Home{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #8d8dff;
+    text-align: center;
+    padding: 5px 10px 5px 0;
+}
+
+.pHome{
+    color: #07004e;
+    text-align: justify;
+    padding: 5px 10px 5px 0;
+}
+
+.textHome{
+    font-family: system-ui, 'Segoe UI','Open Sans', 'Helvetica Neue', sans-serif;
+    color: #1a0f91;
+    text-align: center;
+    padding: 5px 10px 5px 0;
+}
+
 .homeImg{
     max-width: 800px;
     width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
 }
 
 .btn{
-    background-color: #484bf2;
-    border: 2px solid #484bf2;
+    color: white;
+    background-color: #8d8dff;
+    border: 2px solid #8d8dff;
     transition: transform .5s ease-in-out;
 }
 
 .btn:hover{
-    background-color: #1a0f91;
-    border: 2px solid #1a0f91;
+    background-color: #484bf2;
+    border: 2px solid #484bf2;
 }
 
 .btn:active{
-    background-color: #07004e !important;
-    border: 2px solid #07004e !important;
+    background-color: #1a0f91 !important;
+    border: 2px solid #1a0f91 !important;
     transform: scale(.98);
 }
 
+@media only screen and (min-width: 1200px) {
+    .marTop{
+        margin-top: 60px;
+    }
+}
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 800px) {
     .homeImg{
-        max-width: 400px;
-        width: 100%;
+        margin-top: 20px;
+    }
+    .btnDiv{
+        display: flex;
+        justify-content: center;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .rowMar{
+        margin: 0 20px;
     }
   }
