@@ -12,13 +12,13 @@ const Login = () => {
             <div>
               <Form>
                 <Form.Group className="mb-3 col-lg-8 col-md-8" controlId="formBasicEmail">
-                  <Form.Control name="email" type="email" onChange={getData} placeholder="Email" />
+                  <Form.Control name="email" type="email" placeholder="Email" />
                 </Form.Group>
 
                 <Form.Group className="mb-3 col-lg-8 col-md-8" controlId="formBasicPassword">
-                  <Form.Control name="password" type="password" onChange={getData} placeholder="Password" />
+                  <Form.Control name="password" type="password" placeholder="Password" />
                 </Form.Group>
-                <Button className={`col-lg-8 col-md-8 ${HomeCSS.btn}`} onClick={setlocalStorage} variant="primary" type="submit">
+                <Button className={`col-lg-8 col-md-8 ${HomeCSS.btn}`} variant="primary" type="submit">
                   Submit
                 </Button>
               </Form>
