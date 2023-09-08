@@ -15,7 +15,7 @@
 }
 
 @media only screen and (max-width: 600px) {
-    .navCon{
-        padding: 0 40px;
+    .navLink{
+        margin: 0 30px;
     }
   }
