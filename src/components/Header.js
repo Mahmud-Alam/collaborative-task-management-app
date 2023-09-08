@@ -11,10 +11,11 @@ const Header = () => {
     <>
       <Navbar className={HeaderCSS.navBar} bg="dark" data-bs-theme="dark">
         <Container className={HeaderCSS.navCon}>
-          <Navbar.Brand href="#home"><span><NavLink className={HeaderCSS.nav} to="/"><img src="./CTMA_logo.png" className={HeaderCSS.logo} alt=""/></NavLink></span></Navbar.Brand>
+          <NavLink className={HeaderCSS.navLink} to="/"><img src="./CTMA_logo.png" className={HeaderCSS.logo} alt=""/></NavLink>
           <Nav className="me-auto">
-            <Nav.Link><span><NavLink className={HeaderCSS.nav} to="/">Home</NavLink></span></Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
+            <NavLink className={HeaderCSS.navLink} to="/">Home</NavLink>
+            <NavLink className={HeaderCSS.navLink} to="/">Task</NavLink>
+            <NavLink className={HeaderCSS.navLink} to="/">About Us</NavLink>
           </Nav>
         </Container>
       </Navbar>
