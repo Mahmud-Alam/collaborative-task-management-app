@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Col, Container, Row, Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import HomeCSS from './Home.module.css'
+import HomeCSS from "./Home.module.css";
 const Dashboard = () => {
   const loginUser = JSON.parse(localStorage.getItem("user_login"))[0];
   const allUserData = JSON.parse(localStorage.getItem("userData"))[0];
@@ -25,13 +25,13 @@ const Dashboard = () => {
               </Button>
             </Col>
             <Col>
-              <Table responsive="sm">
+              <table class="table table-hover table-striped">
                 <thead>
                   <tr>
-                    <th>#</th>
-                    <th>Username</th>
-                    <th>Name</th>
-                    <th>Email</th>
+                    <th scope="col">#</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -44,7 +44,7 @@ const Dashboard = () => {
                     </tr>
                   ))}
                 </tbody>
-              </Table>
+              </table>
             </Col>
           </Row>
         </Container>
