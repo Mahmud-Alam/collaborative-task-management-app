@@ -12,7 +12,6 @@ const Login = () => {
         email:"",
         password:""
     })
-    //console.log(inpVal);
 
     const [data, setData] = useState([])
     
@@ -31,38 +30,44 @@ const Login = () => {
 
     }
 
+    const isUserExist = (arr, key, val) => {
+      for(let obj of arr){
+          if(obj[key] === val){
+              return obj;
+          }
+      }
+      return false;
+    }
+
     const setlocalStorage = (e) => {
         e.preventDefault();
-        //console.log(inpVal);
         
-        const getUserArr = localStorage.getItem("userData")
-        //console.log(getUserArr);
+        const getStorageArr = JSON.parse(localStorage.getItem("userData"))[0]
 
         const {email, password} = inpVal;
 
         if(email === ""){
             alert('Email is required!')
-        }else if(!email.includes("@")){
-            alert('Please Enter valid Email Address!')
         }else if(password === ""){
             alert('Password is required!')
-        }else if(password.length < 6){
-            alert('Password should be at least 6 characters long')
         }else{
-            if(getUserArr && getUserArr.length){
-                const userData = JSON.parse(getUserArr);
-                const userLogin = userData.filter((ele,i)=>{
-                    return ele.email === email && ele.password ===password;
-                });
-                
-                if(userLogin.length === 0){
-                    alert("Email or Password is Incorrect!")
+            if(getStorageArr.length>0){
+              const user = isUserExist(getStorageArr,"email",email);
+              console.log(user);
+              if(user){
+                if(user.password === password){
+                  localStorage.setItem("user_login", JSON.stringify([user]));
+                  history("/dashboard");
                 }else{
-                    localStorage.setItem("user_login", JSON.stringify(userLogin));
-                    history("/dashboard");
+                  alert("Password is Incorrect!")
                 }
+              }else{
+                alert('Email is Incorrect!!');
+              }
+            }else{
+              alert('Create an Accout first!');
+              history("/signup");
             }
-
         }
     }
 

@@ -34,12 +34,12 @@ const SignUp = () => {
     const isUserExist = (arr, key, val) => {
       for(let obj of arr){
           console.log(obj);
-          if(obj[key]==val){
+          if(obj[key] === val){
               return true;
           }
       }
       return false;
-  }
+    }
 
     const setlocalStorage = (e) => {
         e.preventDefault();
