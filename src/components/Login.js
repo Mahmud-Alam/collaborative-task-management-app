@@ -42,8 +42,8 @@ const Login = () => {
     const setlocalStorage = (e) => {
         e.preventDefault();
         
-        const getStorageArr = JSON.parse(localStorage.getItem("userData"))[0]
-
+        const getStorageData = JSON.parse(localStorage.getItem("userData"))
+        
         const {email, password} = inpVal;
 
         if(email === ""){
@@ -51,7 +51,8 @@ const Login = () => {
         }else if(password === ""){
             alert('Password is required!')
         }else{
-            if(getStorageArr.length>0){
+            if(getStorageData !== null){
+              const getStorageArr = getStorageData[0];
               const user = isUserExist(getStorageArr,"email",email);
               console.log(user);
               if(user){
@@ -65,7 +66,7 @@ const Login = () => {
                 alert('Email is Incorrect!!');
               }
             }else{
-              alert('Create an Accout first!');
+              alert('Database is Empty!\nCreate an Accout first!');
               history("/signup");
             }
         }
