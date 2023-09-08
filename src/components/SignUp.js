@@ -31,6 +31,16 @@ const SignUp = () => {
 
     }
 
+    const isUserExist = (arr, key, val) => {
+      for(let obj of arr){
+          console.log(obj);
+          if(obj[key]==val){
+              return true;
+          }
+      }
+      return false;
+  }
+
     const setlocalStorage = (e) => {
         e.preventDefault();
 
@@ -53,10 +63,22 @@ const SignUp = () => {
         }else if(password.length < 6){
             alert('Password should be at least 6 characters long')
         }else{
-            localStorage.setItem("userData",JSON.stringify([...data,inpVal]));
-
+            if(data.length>0){
+              if(isUserExist(data,"username",username)){
+                alert('Username Already Exist!')
+              }else if(isUserExist(data,"email",email)){
+                alert('Email Already Exist!')
+              }else{
+                data.push(inpVal);
+                console.log(data.length);
+                localStorage.setItem("userData",JSON.stringify([data]));
+              }
+            }else{
+              data.push(inpVal);
+              console.log(data.length);
+              localStorage.setItem("userData",JSON.stringify([data]));
+            }
         }
-        
     }
 
 
